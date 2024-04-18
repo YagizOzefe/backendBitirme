@@ -1,0 +1,136 @@
+{% load static %}
+<nav class="border-bottom">
+    <div class="container d-flex flex-wrap">
+
+        <ul class="nav">
+            <li class="nav-item"><a href="{% url 'login' %}" class="nav-link link-body-emphasis px-2">Hi! Sign in</a>
+            </li>
+            <li class="nav-item"><a href="{% url 'register' %}" class="nav-link link-body-emphasis px-2">or register</a>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Daily Deals</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Help & Contact</a></li>
+
+            {% if user.is_authenticated %}
+
+            <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link link-body-emphasis px-2">LOGOUT</a></li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">{{request.user}}</a>
+            </li>
+            {% endif %}
+        </ul>
+
+        <ul class="nav nav-c ms-auto">
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2 active" aria-current="page"><i
+                        class="fa-solid fa-flag"></i> Ship to</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Sell</a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Watchlist <i
+                        class="fa-solid fa-angle-down"></i></a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">My eBay <i
+                        class="fa-solid fa-angle-down"></i></a></li>
+            <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2"><i style="font-size: 1.2rem;"
+                        class="fa-regular fa-bell"></i></a></li>
+
+            {% if user.is_authenticated %}
+
+            <li class="nav-item">
+                <a href="{% url 'sepet' %}" class="nav-link link-body-emphasis px-2">
+                    <i style="font-size: 1.2rem;" class="fa-solid fa-cart-shopping">
+                    </i>
+                </a>
+            </li>
+
+            {% endif %}
+
+
+        </ul>
+
+    </div>
+</nav>
+
+
+
+
+<header class="py-3  border-bottom">
+    <div class="container d-flex flex-wrap justify-content-center">
+        <a href="/" class="d-flex align-items-center mb-3 mb-lg-0  link-body-emphasis text-decoration-none">
+
+            <span><img width="110px" src="{% static 'img/pngwing.com.png' %}" alt=""></span>
+
+        </a>
+
+        <div class="dropdown">
+            <button class="btn" style="font-size: 14px;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Shop by <br> category <i class="fa-solid fa-angle-down mt-3"></i>
+            </button>
+
+            <ul class="dropdown-menu">
+
+                <div class="d-flex gap-5">
+
+                    <div class="col1 d-flex flex-column">
+
+                        <div>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <h6>Kategoriler</h6>
+                                </a>
+                            </li>
+
+                            {% for kategori in kategoriler %}
+
+                            <li>
+                                <a class="dropdown-item" href="/?q={{kategori.name}}">{{kategori.name}}</a>
+                            </li>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- <div class="see">
+                    <span><a href="#">See all categories</a></span>
+                </div> -->
+            </ul>
+        </div>
+
+
+        <nav class="navbar">
+            <div class="container-fluid">
+                <form class="d-flex" method="GET" role="search">
+
+                    <input class="form-control me-2" name="q" type="search" value="{{search}}"
+                        placeholder="Search for everything" aria-label="Search">
+                    <button type="submit" class="btn btn-primary px-5">Search</button>
+
+                </form>
+
+                <a class="nav-link px-2 text-center align-items-center d-flex" style="font-size: 11px;"
+                    href="#">Advanced</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+<div class="container">
+
+    <ul class="nav d-flex justify-content-center">
+        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3"><i class="fa-solid fa-heart"></i>
+                Saved</a></li>
+        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Electronics</a></li>
+        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Motors</a></li>
+        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Fashion</a></li>
+        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Collectibles and Art</a></li>
+        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Sports</a></li>
+        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Health & Beauty</a></li>
+        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Industrial equipment</a></li>
+        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Home & Garden</a></li>
+        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Deals</a></li>
+        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-3">Sell</a></li>
+    </ul>
+
+</div>

@@ -1,0 +1,59 @@
+{% load static %}
+{% load humanize %}
+<div class="product-box">
+
+    <!-- <span class="p-discount">$224.00</span> -->
+
+    <div class="p-img-container">
+        <div class="p-img">
+
+            <a href="{% url 'detay' product.slug %}">
+                <img src="{{product.image.url}}" alt="{{product.name}}">
+            </a>
+
+        </div>
+    </div>
+
+    <div class="p-box-text">
+
+        <!-- <div class="product-category">
+            <span>Headphone</span>
+        </div> -->
+
+
+        <a href="{% url 'detay' product.slug %}" class="product-title">{{product.name}}</a>
+        <p>{{product.content|truncatechars:"40"}}</p>
+
+        <div class="price-buy">
+            <span class="p-price">
+                <p>${{product.price|intcomma}}</p>
+            </span>
+
+            
+
+
+
+
+
+            <!-- <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="productId" value="{{product.id}}">
+                <input type="number" name="adetForm" class="w-25" value="1" id="">
+                <input style="background-color: #3498CA; color:white" type="submit" value="Sepete Ekle" name="sepet"
+                    class="btn btn-primary">
+            </form> -->
+
+
+
+            <small>Kategori: {{product.kategori}}</small>
+
+            <hr>
+
+        </div>
+
+
+        <small class="text-capitalize">{{product.created_at|naturaltime}}</small>
+
+    </div>
+
+</div>

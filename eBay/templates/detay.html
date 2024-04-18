@@ -1,0 +1,1689 @@
+{% load static %}
+{% load humanize %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detay Sayfasi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/detay.css' %}">
+    <link rel="stylesheet" href="{% static 'css/glider.min.css' %}">
+
+</head>
+
+<body class="">
+    <nav class="border-bottom">
+        <div class="container d-flex flex-wrap">
+
+            <ul class="nav">
+                <li class="nav-item"><a href="{% url 'login' %}" class="nav-link link-body-emphasis px-2">Hi! Sign
+                        in</a>
+                </li>
+                <li class="nav-item"><a href="{% url 'register' %}" class="nav-link link-body-emphasis px-2">or
+                        register</a>
+                </li>
+
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Daily Deals</a></li>
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Help & Contact</a></li>
+
+                {% if user.is_authenticated %}
+
+                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link link-body-emphasis px-2">LOGOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{request.user}}</a>
+                </li>
+                {% endif %}
+            </ul>
+
+            <ul class="nav nav-c ms-auto">
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2 active" aria-current="page"><i
+                            class="fa-solid fa-flag"></i> Ship to</a></li>
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Sell</a></li>
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Watchlist <i
+                            class="fa-solid fa-angle-down"></i></a></li>
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">My eBay <i
+                            class="fa-solid fa-angle-down"></i></a></li>
+                <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2"><i style="font-size: 1.2rem;"
+                            class="fa-regular fa-bell"></i></a></li>
+
+                {% if user.is_authenticated %}
+                <div class="icon-cart">
+
+                    <li class="nav-item"><a href="{% url 'sepet' %}" class="nav-link link-body-emphasis px-2"><i
+                                style="font-size: 1.2rem;" class="fa-solid fa-cart-shopping"></i></a>
+                    </li>
+
+                    <span class="i-cart"></span>
+
+                </div>
+                {% endif %}
+
+            </ul>
+
+        </div>
+    </nav>
+
+    <!-- <div class="cartTab">
+        <h1>Shoping Cart</h1>
+
+        <div class="listCart">
+
+            <div class="item">
+
+                <div class="image">
+                    <img src="{% static 'img/s-l1600.jpg' %}" alt="">
+                </div>
+
+                <div class="name">
+                    NAME
+                </div>
+
+                <div class="totalPrice">
+                    129$
+                </div>
+
+                <div class="quantityy">
+                    <span class="minus">
+                        << /span>
+                            <span>1</span>
+                            <span class="plus">></span>
+
+                </div>
+            </div>
+            <div class="item">
+
+                <div class="image">
+                    <img src="vendor/img/s-l1600.jpg" alt="">
+                </div>
+
+                <div class="name">
+                    NAME
+                </div>
+
+                <div class="totalPrice">
+                    129$
+                </div>
+
+                <div class="quantityy">
+                    <span class="minus">
+                        << /span>
+                            <span>1</span>
+                            <span class="plus">></span>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="btn">
+            <button class="close">CLOSE</button>
+            <button class="checkOut">CHECK Out</button>
+        </div>
+    </div> -->
+
+
+    <header class="py-3">
+        <div class="container d-flex flex-wrap justify-content-center">
+            <a href="{% url 'index' %}"
+                class="d-flex align-items-center mb-3 mb-lg-0  link-body-emphasis text-decoration-none">
+
+                <span><img width="110px" src="{% static 'img/pngwing.com.png' %}" alt=""></span>
+
+            </a>
+
+            <div class="dropdown">
+                <button class="btn" style="font-size: 14px;" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Shop by <br> category <i class="fa-solid fa-angle-down mt-3"></i>
+                </button>
+
+                <ul class="dropdown-menu">
+                    <div class="d-flex gap-5">
+
+
+                        <div class="col1 d-flex flex-column">
+                            <div>
+
+                                <li>
+                                    <a class="dropdown-item" href="#">
+                                        <h6>Kategoriler</h6>
+                                    </a>
+                                </li>
+                                {% for kategori in kategoriler %}
+
+                                <li>
+                                    <a class="dropdown-item" href="/?q={{kategori.name}}">{{kategori.name}}</a>
+                                </li>
+
+                                {% endfor %}
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- <div class="see">
+                        <span><a href="#">See all categories</a></span>
+                    </div> -->
+
+                </ul>
+            </div>
+
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <form class="d-flex" role="search">
+
+                        <input class="form-control me-2" type="search" placeholder="Search for everything"
+                            aria-label="Search">
+
+                        <button type="submit" class="btn btn-primary px-5">Search</button>
+                    </form>
+
+                    <a class="nav-link px-2 text-center align-items-center d-flex" style="font-size: 11px;"
+                        href="#">Advanced</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="container">
+
+        <nav class="d-flex justify-content-between"
+            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'index' %}"><i class="fa-solid fa-angle-left"></i> Back to home page</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Electronics</li>
+                <li class="breadcrumb-item active" aria-current="page">EPortable Audio & Headpho...</li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Headphones</li>
+            </ol>
+
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Share</a></li>
+                <li class="breadcrumb-item"><a href="#">Add to Watchlist</a></li>
+            </ul>
+
+        </nav>
+
+    </div>
+
+    <div class="container d-flex ">
+
+
+        <div class="my-slider">
+
+            <div class="img-con">
+                <div class="my-img">
+
+                    <img class="image" src="{{product.image.url}}" alt="">
+
+                </div>
+
+            </div>
+
+            <div class="img-con">
+                <div class="my-img">
+
+                    <img class="image" src="{% static 'img/s-l1600 (1).jpg' %}" alt="">
+
+                </div>
+
+            </div>
+
+            <div class="img-con">
+                <div class="my-img">
+
+                    <img class="image" src="{% static 'img/s-l1600.jpg' %}" alt="">
+
+                </div>
+
+            </div>
+
+            <div class="img-con">
+                <div class="my-img">
+
+                    <img class="image" src="{% static 'img/s-l1600(d).jpg' %}" alt="">
+
+                </div>
+
+            </div>
+
+            <div class="img-con">
+                <div class="my-img">
+
+                    <img class="image" src="{% static 'img/s-l1600 (2).jpg' %}" alt="">
+
+                </div>
+
+            </div>
+
+            <div class="img-con">
+                <div class="my-img">
+
+                    <img class="image" src="{% static 'img/s-l1600 (3).jpg' %}" alt="">
+
+                </div>
+
+            </div>
+
+            <div class="img-con">
+                <div class="my-img">
+
+                    <img class="image" src="{% static 'img/s-l1600 (4).jpg' %}" alt="">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="main-img-box">
+            <img width="70%" src="{{product.image.url}}" id="mainImage" class="main-image" alt="">
+
+
+            <div class="sponsored">
+                <h4>Similar sponsored items</h4>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+
+                    <div class="card align-items-center" style="width: 80%;">
+                        <img style="width: 90%;" src="{% static 'img/kulaklik1.jpg' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title fs-6">Bose QuietComfort Ultra Headphones - Black - BRAND NEW IN SEALED
+                                BOX-NEVER</h5>
+                            <p class="card-text">
+                                <span>New · Private <br></span>
+                                <span>$281.00 <br></span>
+                                <span>4 bids <br></span>
+                                <span>3d <br></span>
+                                <span>+ US $85.34 shipping <br></span>
+                                <span>15 watchers</span>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+
+                    <div class="card align-items-center" style="width: 80%;">
+
+                        <img style="width: 80%;" src="{% static 'img/kulaklik2.jpg' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title fs-6">Bose QuietComfort 35 Wireless Bluetooth Noise Cancelling
+                                Over-Ear Headphones</h5>
+                            <p class="card-text">
+                                <span>Pre-owned · Private</span>
+                                <span>$175.00 <br></span>
+                                <span>+ US $33.35 shipping</span>
+                                <span>Seller with a 100% positive feedback</span>
+
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4">
+
+                    <div class="card align-items-center" style="width: 80%;">
+
+                        <img src="{% static 'img/kulaklik3.jpg' %}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title fs-6">Bose QuietComfort Earplugs II Noise Cancelling Upgraded Refit
+                                In-Ear Diy MMCX</h5>
+                            <p class="card-text">
+                                <span>New · Business <br></span>
+                                <span>$69.70 <br></span>
+                                <span>Free shipping <br></span>
+                                <span>Popular</span>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="detaylar">
+            <h5>{{product.name}}</h5>
+            <span>Original Retail Packaging - Buy Direct From Bose</span>
+
+            <div class="sell-card">
+                <img width="40px" src="{% static 'img/s-l64.jpg' %}" alt="">
+
+                <span><a href="">Bose</a></span>
+                <span>(59569) <br> </span>
+
+                <span>98% positive -</span>
+                <span>Seller's other items</span>
+                <span>- Contact seller</span>
+
+            </div>
+
+            <div class="price fw-bold">
+                <span>
+                    US ${{product.price|intcomma}}
+                </span>
+            </div>
+
+            <div>
+                <span>
+                    List price US $279.00
+                </span>
+            </div>
+
+            <div>
+                <span>Save US $150.00 (54% off)</span>
+            </div>
+
+            <div class="mt-3">
+                <span>Condition:
+                    Certified - Refurbished</span>
+
+
+                <div>
+                    <span><i>“The item is in a pristine, like-new condition. It has been professionally inspected,
+                            cleaned, and ”... <a href="#">Read more</a></i></span>
+                </div>
+            </div>
+
+
+
+            <label class="mt-3" for="">Color: </label>
+            <select name="" id="">
+                <option value="-1">- Select -</option>
+                <option value="0">Triple Black</option>
+                <option disabled value="1">Soapstone (Out Of Stock)</option>
+                <option value="2">Eclipse Gray</option>
+                <option value="3">Midnight Blue</option>
+            </select>
+
+            <div class="quantity d-flex mt-3">
+                <span class="q1">Quantity: </span>
+
+                <div class="q-box text-center">
+                    <span>1</span>
+                </div>
+
+                <span>Limited quantity available / 8,087 sold</span>
+            </div>
+
+            
+
+            <div class="my-buy-btns">
+                <form action="{% url 'sepetEkle' %}" method="POST">
+                    {% csrf_token %}
+                    <input hidden name="product_id" value="{{product.id}}" type="text">
+                    
+                    
+                    {% if request.user.is_authenticated %}
+                    
+                    <button id="sepet-btn" type="submit" value="Satın Al" style="background-color: #3498CA; color:white">SEPETE EKLE</button>
+                        
+                    {% else %}
+                    <a style="background-color: #3498CA; color:white" href="{% url 'login' %}">SEPETE EKLE</a>
+                    {% endif %}
+                        
+                </form>
+                <button style="background-color: #0053A0; color:white">Buy It Now</button>
+
+                
+
+                
+
+                <button class="btn-last"><i class="fa-regular fa-heart"></i> Add to watchlist</button>
+
+            </div>
+
+
+            <div class="trend-box">
+
+                <div class="tb-1">
+                    <img src="{% static 'img/-ebay-ux-app-components-x-wtb-signals-icons-lightning-y16zjeeG.svg' %}" alt="">
+                    <span>This one's trending. 8087 have already sold.</span>
+                </div>
+
+                <div class="tb-2 mt-3">
+                    <img src="{% static 'img/-ebay-ux-app-components-x-wtb-signals-icons-return-nWTE4Q6Y.svg' %}" alt="">
+                    <span>Breathe easy. Returns accepted.</span>
+                </div>
+
+            </div>
+
+
+            <div class="shipping">
+
+                <div class="s1">
+
+                    <span>Shipping: </span>
+                    <span>Does not ship to Turkey. See details <br></span>
+                    <span>Located in: Framingham, Massachusetts, United States</span>
+
+                </div>
+
+                <div class="d1">
+                    <span>Delivery: </span>
+                    <span>Varies</span>
+                </div>
+
+                <div class="r1">
+                    <span>Returns: </span>
+                    <span>30 days returns. Buyer pays for return shipping. See details- for more information about
+                        returns</span>
+                </div>
+
+                <div class="p1">
+                    <span>Payments: </span>
+                    <img width="80%" src="{% static 'img/ebayPAY.png' %}" alt="">
+                </div>
+            </div>
+
+
+            <div class="confidence">
+                <h6>Shop with confidence</h6>
+
+                <span>Direct from BOSE <br></span>
+                <span>Item sold directly by the brand. </span>
+
+                <div class="mt-2">
+                    <span><i class="fa-solid fa-check"></i> eBay Money Back Guarantee <br></span>
+                    <span><i class="fa-solid fa-dollar-sign"></i> Get the item you ordered or your money back. Learn
+                        more</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container ">
+
+        <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center">
+                <h3>Related sponsored items</h3>
+
+                <span class="ms-5">See all <i class="fa-solid fa-chevron-right"></i></span>
+            </div>
+
+            <div>
+                <span>Feedback on our suggestions</span>
+            </div>
+        </div>
+
+        <section class="p-slider">
+
+            <div class="glider-contain">
+                <div class="glider">
+                    <div class="product-box">
+
+
+                        <span class="p-discount">$224.00</span>
+
+                        <div class="p-img-container">
+                            <div class="p-img">
+
+                                <a href="#">
+                                    <img src="{{product.image.url}}" alt="{{product.name}}">
+                                    <!-- <img src="vendor/img/s-l500 (1).webp" alt=""> -->
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div class="p-box-text">
+
+                            <!-- <div class="product-category">
+                                <span>Headphone</span>
+                            </div> -->
+
+                            <a href="#" class="product-title">Bose QuietComfort II Noise Cancelling Headphones,
+                                Certified</a>
+
+                            <div class="price-buy">
+                                <span class="p-price">
+                                    $129.00
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="product-box">
+
+
+                        <span class="p-discount">$224.00</span>
+
+                        <div class="p-img-container">
+                            <div class="p-img">
+
+                                <a href="#">
+                                    <img src="{{product.image.url}}" alt="{{product.name}}">
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div class="p-box-text">
+
+                            <!-- <div class="product-category">
+                                <span>Headphone</span>
+                            </div> -->
+
+                            <a href="#" class="product-title">Bose QuietComfort II Noise Cancelling Headphones,
+                                Certified</a>
+
+                            <div class="price-buy">
+                                <span class="p-price">
+                                    $129.00
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="product-box">
+
+
+                        <span class="p-discount">$224.00</span>
+
+                        <div class="p-img-container">
+                            <div class="p-img">
+
+                                <a href="#">
+                                    <img src="{{product.image.url}}" alt="{{product.name}}">
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div class="p-box-text">
+
+                            <!-- <div class="product-category">
+                                <span>Headphone</span>
+                            </div> -->
+
+                            <a href="#" class="product-title">Bose QuietComfort II Noise Cancelling Headphones,
+                                Certified</a>
+
+                            <div class="price-buy">
+                                <span class="p-price">
+                                    $129.00
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div class="product-box">
+
+
+                        <span class="p-discount">$224.00</span>
+
+                        <div class="p-img-container">
+                            <div class="p-img">
+
+                                <a href="#">
+                                    <img src="{{product.image.url}}" alt="{{product.name}}">
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div class="p-box-text">
+
+                            <!-- <div class="product-category">
+                                <span>Headphone</span>
+                            </div> -->
+
+                            <a href="#" class="product-title">Bose QuietComfort II Noise Cancelling Headphones,
+                                Certified</a>
+
+                            <div class="price-buy">
+                                <span class="p-price">
+                                    $129.00
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div class="product-box">
+
+
+                        <span class="p-discount">$224.00</span>
+
+                        <div class="p-img-container">
+                            <div class="p-img">
+
+                                <a href="#">
+                                    <img src="{{product.image.url}}" alt="{{product.name}}">
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div class="p-box-text">
+
+                            <!-- <div class="product-category">
+                                <span>Headphone</span>
+                            </div> -->
+
+                            <a href="#" class="product-title">Bose QuietComfort II Noise Cancelling Headphones,
+                                Certified</a>
+
+                            <div class="price-buy">
+                                <span class="p-price">
+                                    $129.00
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div class="product-box">
+
+
+                        <span class="p-discount">$224.00</span>
+
+                        <div class="p-img-container">
+                            <div class="p-img">
+
+                                <a href="#">
+                                    <img src="{{product.image.url}}" alt="{{product.name}}">
+                                </a>
+
+                            </div>
+                        </div>
+
+                        <div class="p-box-text">
+
+                            <!-- <div class="product-category">
+                                <span>Headphone</span>
+                            </div> -->
+
+                            <a href="#" class="product-title">Bose QuietComfort II Noise Cancelling Headphones,
+                                Certified</a>
+
+                            <div class="price-buy">
+                                <span class="p-price">
+                                    $129.00
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button aria-label="Previous" class="glider-prev"><i class="fa-solid fa-angle-left"></i></button>
+                <button aria-label="Next" class="glider-next"><i class="fa-solid fa-angle-right"></i></button>
+
+            </div>
+
+
+        </section>
+    </div>
+
+
+
+
+
+    <div class="container">
+
+        <div class="tabs">
+
+            <input class="input" name="tabs" type="radio" id="tab-1" checked="checked" />
+            <label class="label" for="tab-1">About this item</label>
+
+            <div class="panel">
+                <div>
+                    <span>Seller assumes all responsibility for this listing.</span>
+                </div>
+
+                <div>
+                    <span>Last updated on Feb 12, 2024 06:09:16 PSTView all revisions</span>
+                </div>
+
+                <h1>Item specifics</h1>
+
+
+                <div>
+
+                    <span style="margin-right: 70px; color: #707070;">
+                        Condition
+                    </span>
+
+                    <span style="margin-right: 46px;">
+                        Certified - Refurbished
+                    </span>
+
+                    <span style="margin-right: 50px; color: #707070;">
+                        Seller Notes
+                    </span>
+
+                    <span>
+                        <i>
+                            “The item is in a pristine, like-new condition. It has been professionally inspected,
+                            cleaned, and ... Read more about the seller notes
+                        </i>
+                    </span>
+                </div>
+
+
+                <div>
+                    <span style="margin-right: 95px; color: #707070;">
+                        Brand
+                    </span>
+
+                    <span style="margin-right: 160px;">
+                        Bose
+                    </span>
+
+                    <span style="margin-right: 50px; color: #707070;">
+                        Form Factor
+                    </span>
+
+                    <span>
+                        In-Ear Only
+                    </span>
+
+                </div>
+
+
+
+                <div>
+
+                    <span style="margin-right: 80px; color: #707070;">
+                        Type
+                    </span>
+
+                    <span style="margin-right: 120px;">
+                        Earbud (In Ear)
+                    </span>
+
+                    <span style="margin-right: 50px; color: #707070;">
+                        Number of Earpieces
+                    </span>
+
+                    <span>
+                        Double
+                    </span>
+
+                </div>
+
+
+
+                <div>
+
+                    <span style="margin-right: 80px; color: #707070;">
+                        Wireless Technology
+                    </span>
+
+                    <span style="margin-right: 70px;">
+                        Bluetooth
+                    </span>
+
+                    <span style="margin-right: 50px; color: #707070;">
+                        Model
+                    </span>
+
+                    <span>
+                        Bose QuietComfort Earbuds II
+                    </span>
+
+                </div>
+
+
+
+                <div>
+
+                    <span style="margin-right: 80px; color: #707070;">
+                        Connectivity
+                    </span>
+
+                    <span style="margin-right: 120px;">
+                        Bluetooth
+                    </span>
+
+                    <span style="margin-right: 50px; color: #707070;">
+                        Microphone Type
+                    </span>
+
+                    <span>
+                        Built-In
+                    </span>
+                </div>
+
+
+                <div>
+                    <span style="margin-right: 80px; color: #707070;">
+                        Features
+                    </span>
+
+                    <span style="margin-right: 40px;">
+                        Built-in Microphone, Call functions, Noise Cancellation, Rechargeable Battery, Replaceable
+                        Earpads, Volume Control, Wireless Charging
+                    </span>
+
+                    <span style="margin-right: 50px; color: #707070;">
+                        MPN
+                    </span>
+
+                    <span>
+                        Does Not Apply
+                    </span>
+
+                </div>
+
+
+
+                <div>
+                    <span style="margin-right: 80px; color: #707070;">
+                        Suitable For
+                    </span>
+
+                    <span style="margin-right: 40px;">
+                        DJ, Live Monitoring, Studio Monitoring, Travel
+                    </span>
+
+
+                </div>
+
+                <h1>Item description from the seller</h1>
+
+                <div class="header-box d-flex align-items-center justify-content-evenly">
+                    <div>
+
+                        <img src="{% static 'img/bose2.webp' %}" alt="">
+                    </div>
+
+                    <div>
+                        <span class="me-5">SHOP ALL</span>
+
+                        <span>SEND US A MESSAGE</span>
+
+                    </div>
+
+                </div>
+
+                <h1 class="main-title">Bose QuietComfort II Earbuds, Certified <br> Refurbished</h1>
+
+
+                <div class="d-flex flex-column">
+
+                    <h2 class="text-center mt-5">Sound Shaped To You</h2>
+                    <p class="text-center" style="font-size: 18px; color: #666666;">Bose QuietComfort® Earbuds II are
+                        the
+                        next generation of wireless listening. Enjoy the best in sound
+                        and noise cancellation that is perfectly <br> yours.</p>
+
+                    <img width="100%" src="{% static 'img/pimage1.jpg' %}" alt="">
+
+
+                    <h2 class="text-center mt-5">Tune In And Tune Out</h2>
+                    <p class="text-center" style="font-size: 18px; color: #666666;"> Pure bliss is in Quiet Mode when
+                        you
+                        silence background noise with the world’s best noise
+                        cancellation.</p>
+
+                    <img width="100%" src="{% static 'img/pimage2.jpg' %}" alt="">
+
+
+                    <h2 class="text-center mt-5">You Heard It Correctly</h2>
+                    <p class="text-center" style="font-size: 18px; color: #666666;">
+                        Lifelike and well-balanced sound is our game, and we achieve it through innovative technology
+                        custom-built for small devices. </p>
+
+
+                    <img width="100%" src="{% static 'img/pimage3.jpeg' %}" alt="">
+
+
+
+                    <!-- mini resimler -->
+
+                    <h2 class="text-center mt-5">Everything Tailored</h2>
+                    <p class="text-center" style="font-size: 18px; color: #666666;"> You always get the best sound
+                        quality because CustomTune technology auto-adjusts it to your ears’ liking.
+
+                    </p>
+
+
+                    <div class="box-type-1 d-flex justify-content-center">
+
+                        <div class="text-1 me-5">
+                            <span>HOW IT WORKS: <br></span>
+                            <div>
+                                <span>1. Your buds send out a chime to learn your ear canal’s <br> unique shape</span>
+                            </div>
+
+                            <div>
+                                <span>2. The chime bounces back and gets picked up by the built-in <br>
+                                    microphones</span>
+
+                            </div>
+
+                            <div>
+                                <span>3. Your buds then optimize a noise cancellation and sound <br> performance that
+                                    fits you perfectly</span>
+
+                            </div>
+                        </div>
+
+
+                        <img width="25%" src="{% static 'img/cq5dam.web.600.600.jpeg' %}" alt="">
+
+                    </div>
+
+
+
+
+
+                    <div class="box-type-2 d-flex justify-content-center mt-5">
+                        <img width="25%" src="{% static '/img/asd1.jpg' %}" alt="">
+
+                        <div class="d-flex flex-column ms-5">
+                            <span>Keep them in comfortably with soft eartips and stability</span>
+
+                            <span>bands that come in three sizes. Then, take the Fit Test in</span>
+
+                            <span>the Bose Music app to make sure it’s just right.</span>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="box-type-2 d-flex justify-content-center mt-5">
+                        <img width="25%" src="{% static 'img/asd2.jpeg' %}" alt="">
+
+                        <div class="d-flex flex-column ms-5">
+                            <span>No more “huh?” during calls thanks to built-in microphones</span>
+
+                            <span>that filter out ambient noise to focus your voice and deliver</span>
+
+                            <span>conversations clearly.</span>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="box-type-1 d-flex justify-content-center">
+
+                        <div class="text-1 me-5">
+
+                            <div>
+                                <span>Take personalization even further with Adjustable EQ</span>
+                            </div>
+
+                            <div>
+                                <span>settings in the Bose Music app. Control bass, mid-range,</span>
+
+                            </div>
+
+                            <div>
+                                <span>and treble levels as you go.</span>
+
+                            </div>
+                        </div>
+
+
+                        <img width="25%" src="{% static 'img/asd3.jpeg' %}" alt="">
+
+                    </div>
+
+
+
+                    <div class="box-type-2 d-flex justify-content-center mt-5">
+                        <img width="25%" src="{% static 'img/asd2.jpeg' %}" alt="">
+
+                        <div class="d-flex flex-column ms-5">
+                            <span>No more “huh?” during calls thanks to built-in microphones</span>
+
+                            <span>that filter out ambient noise to focus your voice and deliver</span>
+
+                            <span>conversations clearly.</span>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="box-type-1 d-flex justify-content-center">
+
+                        <div class="text-1 me-5">
+
+                            <div>
+                                <span>Take personalization even further with Adjustable EQ</span>
+                            </div>
+
+                            <div>
+                                <span>settings in the Bose Music app. Control bass, mid-range,</span>
+
+                            </div>
+
+                            <div>
+                                <span>and treble levels as you go.</span>
+
+                            </div>
+                        </div>
+
+
+                        <img width="25%" src="{% static 'img/asd3.jpeg' %}" alt="">
+
+                    </div>
+
+
+
+
+                    <div class="box-type-2 d-flex justify-content-center mt-5">
+                        <img width="25%" src="{% static 'img/asd2.jpeg' %}" alt="">
+
+                        <div class="d-flex flex-column ms-5">
+                            <span>No more “huh?” during calls thanks to built-in microphones</span>
+
+                            <span>that filter out ambient noise to focus your voice and deliver</span>
+
+                            <span>conversations clearly.</span>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="box-type-1 d-flex justify-content-center">
+
+                        <div class="text-1 me-5">
+
+                            <div>
+                                <span>Take personalization even further with Adjustable EQ</span>
+                            </div>
+
+                            <div>
+                                <span>settings in the Bose Music app. Control bass, mid-range,</span>
+
+                            </div>
+
+                            <div>
+                                <span>and treble levels as you go.</span>
+
+                            </div>
+                        </div>
+
+
+                        <img width="25%" src="{% static 'img/asd3.jpeg' %}" alt="">
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="certified mt-5">
+                    <h4>BOSE CERTIFIED REFURBISHED PRODUCTS</h4>
+                    <span>Certified Refurbished products have previously been purchased from one of our dealers or from
+                        our Direct Sales division. They have then been returned to us under our satisfaction
+                        guarantee.</span>
+
+                    <span>Usually Certified Refurbished products don’t look any different than new products. A product
+                        may have a slight cosmetic blemish, but there is no audible performance imperfection.</span>
+
+                    <div class="mt-3">
+                        <span>Once they have been fully tested, inspected, and remanufactured as necessary, they are
+                            issued at a discount with a satisfaction guarantee. Most products have previously been on
+                            sale at higher</span>
+
+                    </div>
+                    <span>prices in electronic retailers or through our direct marketing channel.</span>
+                </div>
+
+                <div class="specs">
+
+                    <h3>SPECS</h3>
+
+                </div>
+
+                <div class="specs-con">
+                    <div class="mt-5 d-flex justify-content-between">
+
+                        <div>
+                            <h5>Dimensions / Weight</h5>
+
+                            <span>Earbuds:1.2" H x 0.68" W x 0.88" D (0.22 oz each) <br></span>
+                            <span>Charging case:2.61" H x 2.34" W x 1.05" D (2.11 oz) <br></span>
+                            <span>USB cable:12"</span>
+
+                        </div>
+
+                        <div>
+                            <h5>What's In The Box</h5>
+                            <span>Earbuds:1.2" H x 0.68" W x 0.88" D (0.22 oz each) <br></span>
+                            <span>Charging case:2.61" H x 2.34" W x 1.05" D (2.11 oz) <br></span>
+                            <span>USB cable:12"</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mt-5">
+                        <h5>Additional Details</h5>
+
+                        <span>Battery life: Up to 6 hours<br></span>
+                        <span>Earbud charge time: 1 hour<br></span>
+                        <span>Charging case charge time: 3 hours<br></span>
+                        <span>Battery life: Up to 6 hours<br></span>
+                        <span>Earbud charge time: 1 hour<br></span>
+                        <span>Charging case charge time: 3 hours<br></span>
+                        <span>Battery life: Up to 6 hours<br></span>
+                        <span>Earbud charge time: 1 hour<br></span>
+                        <span>Charging case charge time: 3 hours<br></span>
+                        <span>Battery life: Up to 6 hours<br></span>
+                        <span>Earbud charge time: 1 hour<br></span>
+                        <span>Charging case charge time: 3 hours<br></span>
+
+                    </div>
+
+
+
+
+
+                </div>
+
+
+                <div class="header-box d-flex align-items-center justify-content-evenly mt-5">
+                    <div>
+
+                        <img src="{% static 'img/bose2.webp' %}" alt="">
+
+                    </div>
+
+                    <div>
+                        <span class="me-5">SHOP ALL</span>
+
+                        <span>SEND US A MESSAGE</span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <input class="input" name="tabs" type="radio" id="tab-2" />
+            <label class="label" for="tab-2">Shipping, returns, and payments</label>
+
+            <div class="panel">
+                <h1>Shipping, returns, and payments</h1>
+
+                <div>
+                    <span>Item location:Framingham, Massachusetts, United States</span>
+                </div>
+
+                <div>
+                    <span>Ships to: United States</span>
+                </div>
+
+                <div>
+                    <span>Excludes: PO Box, APO/FPO, Africa, Asia, Barbados, Bermuda, Canada, Central America and
+                        Caribbean, Europe, French Guiana, French Polynesia, Greenland, Guadeloupe, Israel, Libya,
+                        Martinique, Mexico, Middle East, New Caledonia, Oceania, Reunion, Russian Federation, Saint
+                        Pierre and Miquelon, South America, Southeast Asia, US Protectorates, Ukraine, Venezuela</span>
+                </div>
+
+
+                <div class="quantity d-flex mt-3">
+                    <span class="q1">Quantity: </span>
+
+                    <div class="q-box text-center">
+                        <span>1</span>
+                    </div>
+
+                    <span>Change country: </span>
+                </div>
+
+                <div class="hand-time">
+                    <span>Handling time</span>
+                </div>
+
+                <span>Will usually ship within 3 business days of receiving cleared payment.</span>
+
+
+                <h4 class="mt-5">Return policy</h4>
+
+                <div class="hand-time d-flex justify-content-between">
+                    <span>
+                        After receiving the item, contact seller within</span>
+                    <span>
+                        Refund will be given as</span>
+                    <span>
+                        Return shipping</span>
+                </div>
+
+                <div style="border-bottom: 1px solid rgb(170, 170, 170);" class="d-flex justify-content-between">
+                    <span>
+                        30 days</span>
+                    <span>
+                        Money Back, Replacement</span>
+                    <span>
+                        Buyer pays for return shipping</span>
+                </div>
+
+                <span>Refer to eBay Return policyopens in a new tab or window for more details. You are covered by the
+                    eBay Money Back Guaranteeopens in a new tab or window if you receive an item that is not as
+                    described in the listing.
+                </span>
+
+
+
+
+                <div class="pay-methods">
+                    <h4 class="mt-5">Payment details</h4>
+
+
+                    <div class="hand-time mb-3">
+                        <span>Payment methods</span>
+                    </div>
+
+                    <img src="{% static 'img/ebayPAY.png' %}" alt="">
+
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="container mt-5 com-bg">
+
+        <div class="comment-sec d-flex justify-content-between">
+
+            <div class="d-flex">
+
+                <div>
+                    <img src="{% static 'img/bose2.webp' %}" alt="">
+                </div>
+
+                <div class="ms-5">
+
+                    <h3>Bose</h3>
+                    <span>98%Positive Feedback</span>
+
+                    <div>
+                        <span>443K items sold</span>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="c-visit d-flex flex-column">
+
+                <button type="button">Visit store</button>
+                <button type="button">Contact</button>
+                <button type="button"><i class="fa-regular fa-heart"></i> Save seller</button>
+
+            </div>
+
+        </div>
+
+        <div class="c-detailed mt-5 d-flex justify-content-between">
+            <div>
+                <h4>Detailed seller ratings</h4>
+
+                <div>
+                    <span>Average for the last 12 months</span>
+                </div>
+
+                <div class="mt-4 d-flex align-items-center">
+                    <span>Accurate description</span>
+
+                    <div class="progress-bar ms-5 me-2">
+
+                    </div>
+                    <span>4.9</span>
+
+                </div>
+
+                <div class="mt-3 d-flex align-items-center">
+                    <span>Reasonable shipping cost</span>
+
+                    <div class="progress-bar ms-5 me-2">
+
+                    </div>
+                    <span>4.9</span>
+
+                </div>
+
+                <div class="mt-3 d-flex align-items-center">
+                    <span>Shipping speed</span>
+
+                    <div class="progress-bar ms-5 me-2">
+
+                    </div>
+                    <span>4.9</span>
+                </div>
+
+                <div class="mt-3 d-flex align-items-center">
+                    <span>Communication</span>
+
+                    <div class="progress-bar ms-5 me-2">
+
+                    </div>
+                    <span>4.9</span>
+                </div>
+
+                <div class="c-popular mt-4">
+                    <h4>Popular categories from this store</h4>
+
+                    <div class="mt-4">
+                        <span class="cstm-btn">Bluetooth Speakers</span>
+                        <span class="cstm-btn">Headphone</span>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="seller-fb">
+
+                <h4>Seller feedback (63,420)</h4>
+                <div>
+                    <span class="me-2">This item (1,045)</span>
+                    <span>All items (63,420)</span>
+                </div>
+
+                <div class="mt-3">
+                    <span>Kullanici1: </span>
+                    <span>Past 6 months</span>
+
+                    <p>Item arrived promptly and as described. All accessories included, box was factory sealed and
+                        marked “refurbished,” device is <br> clean and works perfectly. They sound fabulous and fit
+                        wonderfully. Can’t believe I waited so long to get these for myself. They’re <br> even better
+                        than my
+                        QC35 over the ear headphones because they seal better and <br> reduce more outside noise. Paired
+                        quickly and easily with my iPhone. Many thanks!</p>
+                </div>
+
+                <div class="mt-3">
+                    <span>Kullanici1: </span>
+                    <span>Past 6 months</span>
+
+                    <p>Item arrived promptly and as described. All accessories included, box was factory sealed and
+                        marked “refurbished,” device is <br> clean and works perfectly. They sound fabulous and fit
+                        wonderfully. Can’t believe I waited so long to get these for myself. They’re <br> even better
+                        than my
+                        QC35 over the ear headphones because they seal better and <br> reduce more outside noise. Paired
+                        quickly and easily with my iPhone. Many thanks!</p>
+                </div>
+
+                <div class="mt-3 mb-4">
+                    <span>Kullanici1: </span>
+                    <span>Past 6 months</span>
+
+                    <p>Item arrived promptly and as described. All accessories included, box was factory sealed and
+                        marked “refurbished,” device is <br> clean and works perfectly. They sound fabulous and fit
+                        wonderfully. Can’t believe I waited so long to get these for myself. They’re <br> even better
+                        than my
+                        QC35 over the ear headphones because they seal better and <br> reduce more outside noise. Paired
+                        quickly and easily with my iPhone. Many thanks!</p>
+                </div>
+
+                <button type="button">See all feedback</button>
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer style="margin-top: 200px !important;"
+        class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+
+            <span style="font-size: 11px;" class="mb-3 mb-md-0 text-body-secondary">Copyright © 1995-2024 eBay Inc. All
+                Rights Reserved.
+                Accessibility, User Agreement, Privacy, Payments Terms of Use, Cookies, CA Privacy Notice, Your
+                Privacy Choices and AdChoice</span>
+        </div>
+
+
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <script src="vendor/js/detay.js"></script> -->
+
+
+    <script>
+        let mainImage = document.getElementById("mainImage");
+        let smallImage = document.getElementsByClassName("image")
+
+        smallImage[0].onclick = () => {
+            mainImage.src = smallImage[0].src;
+        }
+
+        smallImage[1].onclick = () => {
+            mainImage.src = smallImage[1].src;
+        }
+
+        smallImage[2].onclick = () => {
+            mainImage.src = smallImage[2].src;
+        }
+
+        smallImage[3].onclick = () => {
+            mainImage.src = smallImage[3].src;
+        }
+
+        smallImage[4].onclick = () => {
+            mainImage.src = smallImage[4].src;
+        }
+
+        smallImage[5].onclick = () => {
+            mainImage.src = smallImage[5].src;
+        }
+
+        smallImage[6].onclick = () => {
+            mainImage.src = smallImage[6].src;
+        }
+        smallImage[7].onclick = () => {
+            mainImage.src = smallImage[7].src;
+        }
+        smallImage[8].onclick = () => {
+            mainImage.src = smallImage[8].src;
+        }
+    </script>
+
+
+
+
+
+    <script src="{% static 'script/glider.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <!-- glider sc -->
+    <script>
+        new Glider(document.querySelector('.glider'), {
+            slidesToScroll: 1,
+            slidesToShow: 4.5,
+            draggable: true,
+            dots: '.dots',
+            arrows: {
+                prev: '.glider-prev',
+                next: '.glider-next'
+            },
+
+            responsive: [
+                {
+                    // screens greater than >= 775px
+                    breakpoint: 1200,
+                    settings: {
+                        // Set to `auto` and provide item width to adjust to viewport
+                        slidesToShow: 4.5,
+                        slidesToScroll: 2,
+                        //itemWidth: 150,
+                        //duration: 0.25 
+                    }
+                }, {
+                    // screens greater than >= 1024px
+                    breakpoint: 900,
+                    settings: {
+                        slidesToShow: 2.5,
+                        slidesToScroll: 1,
+                        //itemWidth: 150,
+                        //duration: 0.25
+                    }
+                }, {
+                    // screens greater than >= 1024px
+                    breakpoint: 640,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        //itemWidth: 150,
+                        //duration: 0.25
+                    }
+                }, {
+                    // screens greater than >= 1024px
+                    breakpoint: 304,
+                    settings: {
+                        slidesToShow: 1.5,
+                        slidesToScroll: 1,
+                        //itemWidth: 150,
+                        //duration: 0.25
+                    }
+                }, {
+                    // screens greater than >= 1024px
+                    breakpoint: 0,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        //itemWidth: 150,
+                        //duration: 0.25
+                    }
+                }
+            ]
+
+
+
+        });
+    </script>
+</body>
+
+</html>

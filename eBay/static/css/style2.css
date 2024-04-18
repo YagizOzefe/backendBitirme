@@ -1,0 +1,189 @@
+nav .container .nav li {
+    font-size: 12px;
+}
+
+.container ul li {
+    font-size: 12px;
+}
+
+.dropdown .btn {
+    background-color: transparent;
+    color: grey;
+    border: none;
+    display: flex;
+}
+
+header input,
+button {
+    border-radius: 0px !important;
+}
+
+header input:focus {
+    box-shadow: none !important;
+}
+
+
+/* RESPONSİVİ UNUTMA!!! */
+
+header .navbar input {
+    
+    border: solid 2px;
+}
+
+/* RESPONSİVİ UNUTMA!!! */
+
+
+.main1 {
+    background-color: #f7f7f7;
+    width: 95%;
+    margin-top: 32px;
+    margin-bottom: 48px;
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.main1 h2 {
+    font-size: 24px;
+}
+
+.main1 .btn1 button {
+    padding: 10px 17px;
+    border-radius: 24px !important;
+}
+
+.container .cont-link {
+    font-size: 24px;
+    font-weight: 700;
+    color: #191919;
+    text-decoration: none;
+}
+
+/* SİLİDER */
+
+/* .p-slider{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0px;
+} */
+
+.product-box {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 15px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    margin: 0px 20px;
+    position: relative;
+}
+
+.p-img-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+
+}
+
+.p-img a,
+.p-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+}
+
+.p-img a img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: contain;
+
+}
+
+.p-box-text {
+    margin-top: 5px;
+    width: 100%;
+}
+
+.product-title {
+    color: #303030;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.product-title:hover {
+    text-decoration: underline;
+}
+
+/* .price-buy{
+    
+} */
+
+.price-buy .p-price {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.p-discount {
+    color: #707070;
+    font-size: 12px;
+    text-decoration: line-through;
+    position: absolute;
+    left: 80px;
+    top: 258px;
+    /* z-index: 100; */
+}
+
+@media (max-width:500px) {
+    .product-box {
+        margin: 0px 10px;
+    }
+
+    .p-slider {
+        width: 100%;
+    }
+
+}
+
+/* SLİDER BİTİŞ */
+
+.container .box-con {
+    background-color: #f7f7f7;
+    width: 100%;
+    margin-top: 30px;
+
+    border-radius: 20px;
+    padding-left: 32px;
+    background-image: url($_57.jpeg);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: right;
+
+}
+
+.container .box-con .title {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.container .box-con span {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.container .box-con button {
+    margin-bottom: 90px;
+}
+
+/* FOOTER */
+
+.container .ftr-p {
+    font-size: 11px;
+}
+
+
+/* SEPET EKLEME */
+

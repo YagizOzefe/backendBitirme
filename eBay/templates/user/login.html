@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+    
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="logo">
+        <a href="{% url 'index' %}">
+
+            <img width="120px" src="{% static 'img/pngwing.com.png' %}" alt="">
+
+        </a>
+    </div>
+    
+    <div class="container">
+        
+        {% if messages %}
+    
+        {% for mesaj in messages %}
+        <div class="alert alert-{{mesaj.tags}} text-center position-relative">
+            {{mesaj}}
+            <button class="btn btn-close position-absolute end-0 me-2"></button>
+        </div>
+        {% endfor %}
+    
+        {% endif %}
+        
+    </div>
+
+    <form method="POST" class="myform">
+        {% csrf_token %}
+        <h1>Hello</h1>
+        <span>Sign in to eBay or <a href="{% url 'register' %}">create an account</a></span>
+
+        <label for="">Kullanıcı Adı:</label>
+        <input type="text" name="kullanici" id="" class="form-control">
+
+        <!-- <label for="">Email:</label>
+        <input type="email" placeholder="Email" name="" id=""> -->
+        
+        <label for="">Şifre:</label>
+        <input type="password" name="password" id="" class="form-control">
+        
+        <input class="btn-1 mt-5" type="submit" value="Continue">
+
+        <p class="or-divider">or</p>
+
+        <button class="btn-2" type="button"><i class="fa-brands fa-facebook"></i> Continue with Facebook</button>
+        <button type="button"><i class="fa-brands fa-google"></i> Continue with Google</button>
+        <button type="button"><i class="fa-brands fa-apple"></i> Continue with Apple</button>
+
+
+        <label style="width: 20%;" for=""><input class="checkb" type="checkbox" name="" id="" checked>Stay signed
+            in</label>
+        <label for="">Using a public or shared device?</label>
+        <label for="">Uncheck to protect your account.</label>
+        <a href="#"> <label for="">Learn more</label><i class="fa-solid fa-angle-down"></i></a>
+
+    </form>
+
+
+
+
+
+    <footer style="margin-top: 200px !important;" class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+
+            <span style="font-size: 11px;" class="mb-3 mb-md-0 text-body-secondary">Copyright © 1995-2024 eBay Inc. All Rights Reserved.
+                Accessibility, User Agreement, Privacy, Payments Terms of Use, Cookies, CA Privacy Notice, Your
+                Privacy Choices and AdChoice</span>
+        </div>
+
+
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,495 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+nav .container .nav li {
+    font-size: 12px;
+}
+
+.container ul li {
+    font-size: 12px;
+}
+
+.dropdown .btn {
+    background-color: transparent;
+    color: grey;
+    border: none;
+    display: flex;
+}
+
+header input,
+button {
+    border-radius: 0px !important;
+}
+
+header form button {
+    background-color: transparent !important;
+    color: #0654ba !important;
+}
+
+header input:focus {
+    box-shadow: none !important;
+}
+
+
+/* RESPONSİVİ UNUTMA!!! */
+header .navbar input {
+    
+    border: solid 2px;
+}
+
+/* RESPONSİVİ UNUTMA!!! */
+
+
+
+/* SLİDER DENEME */
+.container .my-slider {
+    width: 22%;
+    height: 590px;
+    overflow-x: hidden;
+}
+
+.container .my-slider .img-con {
+    margin-top: 10px;
+}
+
+.container .my-img img {
+    width: 100%;
+    padding: 12px 0px;
+    border: 1px solid;
+    border-radius: 20px;
+    cursor: pointer;
+
+
+}
+
+/* .container .main-img-box{
+   
+}   */
+
+
+
+.detaylar .sell-card {
+    border: 1px solid rgb(218, 218, 218);
+    padding: 16px 12px;
+    border-radius: 10px;
+}
+
+.detaylar .sell-card span {
+    font-size: 14px;
+}
+
+.quantity span {
+    font-size: 14px;
+}
+
+.quantity .q1 {
+    margin-right: 10px;
+}
+
+.quantity .q-box {
+    width: 30px;
+    height: 30px;
+    background-color: #f7f7f7;
+    margin-right: 10px;
+}
+
+.detaylar .my-buy-btns {
+    display: flex;
+    flex-direction: column;
+}
+
+.detaylar .my-buy-btns button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 13px 20px;
+    border-radius: 25px !important;
+    border: none;
+}
+
+.detaylar .my-buy-btns .btn-last {
+    color: #3665f3;
+    background-color: transparent;
+    border: 1px solid;
+}
+
+.detaylar .my-buy-btns a{
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    padding: 13px 20px;
+    border-radius: 25px !important;
+    text-decoration: none;
+}
+
+#sepet-btn:hover{
+    background-color: #157bcf !important;
+}
+
+.detaylar .trend-box {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #f7f7f7;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.detaylar .shipping {
+    padding-bottom: 15px;
+    font-size: 14px;
+    border-bottom: solid 1px rgb(192, 192, 192);
+}
+
+
+.detaylar .confidence {
+    margin-top: 15px;
+    margin-bottom: 70px;
+    font-size: 14px;
+    border-bottom: solid 1px rgb(192, 192, 192);
+
+}
+
+
+/* SLİDER BAŞLANGIÇ */
+
+.product-box {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 15px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    margin: 0px 20px;
+    position: relative;
+}
+
+.p-img-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+
+}
+
+.p-img a,
+.p-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+}
+
+.p-img a img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: contain;
+
+}
+
+.p-box-text {
+    margin-top: 5px;
+    width: 100%;
+}
+
+.product-title {
+    color: #303030;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.product-title:hover {
+    text-decoration: underline;
+}
+
+/* .price-buy{
+    
+} */
+
+.price-buy .p-price {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.p-discount {
+    color: #707070;
+    font-size: 12px;
+    text-decoration: line-through;
+    position: absolute;
+    left: 80px;
+    top: 258px;
+    /* z-index: 100; */
+}
+
+@media (max-width:500px) {
+    .product-box {
+        margin: 0px 10px;
+    }
+
+    .p-slider {
+        width: 100%;
+    }
+
+}
+
+/* SLİDER BİTİŞ */
+
+
+/* TABS BAŞLANGIÇ */
+h1 {
+    margin: 0;
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+p {
+    margin-top: 20px;
+    margin-bottom: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.tabs {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    background: #e5e5e5;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+}
+
+.tabs span {
+    font-size: 14px;
+}
+
+.input {
+    position: absolute;
+    opacity: 0;
+}
+
+.label {
+    width: 100%;
+    padding: 20px 30px;
+    background: #e5e5e5;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    color: #7f7f7f;
+    transition: background 0.1s, color 0.1s;
+}
+
+.label:hover {
+    background: #d8d8d8;
+}
+
+.label:active {
+    background: #ccc;
+}
+
+.input:focus+.label {
+    z-index: 1;
+}
+
+.input:checked+.label {
+    background: #fff;
+    color: #000;
+}
+
+@media (min-width: 600px) {
+    .label {
+        width: auto;
+    }
+}
+
+.panel {
+    display: none;
+    padding: 20px 30px 30px;
+    background: #fff;
+}
+
+@media (min-width: 600px) {
+    .panel {
+        order: 99;
+    }
+}
+
+.input:checked+.label+.panel {
+    display: block;
+}
+
+.panel .header-box {
+    width: 100%;
+    height: 148px;
+    color: white;
+    background-color: #181818;
+}
+
+.panel .main-title {
+    text-align: center;
+    font-size: 42px;
+    font-weight: bolder;
+    border-bottom: 1px solid grey;
+    padding: 40px 0px;
+}
+
+
+.panel .box-type-1 {
+    margin-top: 50px;
+}
+
+.panel .specs {
+    background-color: #ccc;
+    padding: 15px 30px;
+    margin-top: 50px;
+}
+
+
+/* YORUM YERİ */
+
+.com-bg {
+    background-color: #F8F8F8;
+    padding: 48px 18px;
+}
+
+/* .c-detailed{
+    
+} */
+
+.c-detailed .progress-bar {
+    width: 80px;
+    background-color: black;
+    height: 4px;
+    border-radius: 20px;
+}
+
+.c-popular .cstm-btn {
+    background-color: #e5e5e5;
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+.c-visit button{
+    padding: 9.5px 20px;
+    border-radius: 30px !important;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* .seller-fb{
+   
+} */
+
+
+.panel .hand-time {
+    margin-top: 15px;
+    background-color: #e8e8e8;
+    padding: 3px 6px 7px 17px;
+    border-bottom: 1px solid rgb(170, 170, 170);
+
+}
+
+.panel .hand-time span {
+    font-size: 10px;
+}
+
+
+/* SEPET EKLEME */
+/* SEPET EKLEME */
+/* SEPET EKLEME */
+
+/* .nav-c {
+    position: relative;
+}
+
+.nav-c .i-cart {
+    width: 16px;
+    height: 16px;
+    font-size: 11px;
+    background-color: rgb(214, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 314px;
+    top: 2px;
+}
+
+.cartTab {
+    width: 270px;
+    background-color: #353432;
+    position: fixed;
+    color: white;
+    inset: 0 -400px 0 auto;
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    transition: transform .5s;
+}
+
+body.showCart .cartTab {
+    inset: 0 0 0 auto;
+}
+
+body.showCart .container {
+    transform: translateX(-250px);
+}
+
+.cartTab h1 {
+    padding: 10px;
+    margin: 0;
+    font-weight: 300;
+}
+
+.cartTab .btn {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.cartTab .btn button {
+    background-color: #3498CA;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cartTab .btn .close {
+    background-color: #fff;
+
+}
+
+.cartTab .listCart .item img {
+    width: 100%;
+
+}
+
+.cartTab .listCart .item {
+    display: grid;
+    grid-template-columns: 70px 40px 70px 1fr;
+    text-align: center;
+    align-items: center;
+}
+
+.listCart .quantityy span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    color: #555;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.listCart .quantityy span:nth-child(2) {
+    background-color: transparent;
+    color: #eee;
+}
+
+.listCart .item:nth-child(even) {
+    background-color: #eee1;
+} */

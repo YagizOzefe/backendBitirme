@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.logo {
+    margin-top: 20px;
+    margin-left: 25px;
+}
+
+.baslik{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.my-radio{
+    text-align: center;
+}
+
+.my-radio span{
+    margin: 0px 12px;
+}
+
+/* FORM */
+
+.mycon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.my-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.my-form .form-top input{
+    border-radius: 7px;
+    padding: 18px 16px 18px;
+    border: solid 1px grey;
+    background-color: #f7f7f7;
+    height: 40px;
+    width: 100%;
+    margin-right: 20px;
+}
+
+.my-form .my-mail{
+    border-radius: 7px;
+    padding: 18px 16px 18px;
+    border: solid 1px grey;
+    background-color: #f7f7f7;
+    height: 40px;
+    width: 100%;
+}
+
+.my-form .sifre input{
+    border-radius: 7px;
+    padding: 18px 16px 18px;
+    border: solid 1px grey;
+    background-color: #f7f7f7;
+    height: 40px;
+    width: 100%;
+}
+
+.my-form p{
+    font-size: 12px;
+    color: #767676;
+}
+
+.my-form button{
+    border-radius: 27px;
+    padding: 13px 20px;
+    width: 65%;
+    border-style: none;
+    background-color: #c7c7c7;
+    color: white;
+    font-weight: 700;
+}
+
+.my-form .fa-solid.fa-eye{
+    position: relative;
+    right: 27px;
+    cursor: pointer;
+}
+
+.fa-eye-slash{
+    position: relative;
+    right: 27px;
+    cursor: pointer;
+}
+
+.my-form .form-top{
+    margin-bottom: 20px;
+}
+
+.my-form .sifre{
+    margin: 20px 0px;
+}
+
+
+
+
+/* BUTONLAR */
+.mybtns{
+    display: flex;
+    flex-direction: column;
+    width: 17%;
+}
+
+.mybtns button{
+    border-radius: 27px;
+    padding: 13px 20px;
+    background-color: white;
+    font-weight: 700;
+    border: solid 1px ;
+}
+
+
+.mybtns .btn-2{
+    background-color: #4267b2;
+    color: white;
+    margin: 15px 0px;
+    
+}
+
+/* ÇİZGİ */
+.or-con{
+    height: 400px;
+    width: 174px;
+    background-color: #ccc;
+    text-align: center;
+    width: 1px;
+    margin: 0px 100px;
+}
+/* ÇİZGİ */
